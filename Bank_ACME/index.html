@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Bank - Sistema Bancario</title>
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./CSS/styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Página de Login -->
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo-container">
+                    <img src="assets/pig-logo.jpg" alt="ACME Bank Logo" class="logo-image">
+                    <h1>ACME Bank</h1>
+                </div>
+                <p>Más que un banco... ¡Una explosión de oportunidades!</p>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="idType">Tipo de Documento</label>
+                    <select id="idType" name="idType" required>
+                        <option value="">Seleccionar</option>
+                        <option value="cedula">Cédula de Ciudadanía</option>
+                        <option value="cedula-extranjeria">Cédula de Extranjería</option>
+                        <option value="pasaporte">Pasaporte</option>
+                        <option value="tarjeta">Tarjeta de Identidad</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="idNumber">Número de Documento</label>
+                    <input type="text" id="idNumber" name="idNumber" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <div class="login-links">
+                <a href="#" id="register-link">Crear Nueva Cuenta</a>
+                <a href="#" id="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Registro -->
+    <div id="register-page" class="page">
+        <div class="register-container">
+            <div class="register-header">
+                <div class="logo-container">
+                    <img src="assets/pig-logo.jpg" alt="ACME Bank Logo" class="logo-image">
+                    <h1>ACME Bank</h1>
+                </div>
+                <p>Crear Nueva Cuenta</p>
+            </div>
+            
+            <form id="register-form" class="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="register-idType">Tipo de Documento</label>
+                        <select id="register-idType" name="idType" required>
+                            <option value="">Seleccionar</option>
+                            <option value="cedula">Cédula de Ciudadanía</option>
+                            <option value="cedula-extranjeria">Cédula de Extranjería</option>
+                            <option value="pasaporte">Pasaporte</option>
+                            <option value="tarjeta">Tarjeta de Identidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-idNumber">Número de Documento</label>
+                        <input type="text" id="register-idNumber" name="idNumber" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Nombres</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Apellidos</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Género</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Seleccionar</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">Ciudad</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" name="password" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="register-cancel" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Página de Recuperación de Contraseña -->
+    <div id="forgot-page" class="page">
+        <div class="forgot-container">
+            <div class="forgot-header">
+                <div class="logo-container">
+                    <img src="assets/pig-logo.jpg" alt="ACME Bank Logo" class="logo-image">
+                    <h1>ACME Bank</h1>
+                </div>
+                <p>Recuperar Contraseña</p>
+            </div>
+            
+            <div id="forgot-step-1">
+                <form id="forgot-form">
+                    <div class="form-group">
+                        <label for="forgot-idType">Tipo de Documento</label>
+                        <select id="forgot-idType" name="idType" required>
+                            <option value="">Seleccionar</option>
+                            <option value="cedula">Cédula de Ciudadanía</option>
+                            <option value="cedula-extranjeria">Cédula de Extranjería</option>
+                            <option value="pasaporte">Pasaporte</option>
+                            <option value="tarjeta">Tarjeta de Identidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="forgot-idNumber">Número de Documento</label>
+                        <input type="text" id="forgot-idNumber" name="idNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="forgot-email">Correo Electrónico</label>
+                        <input type="email" id="forgot-email" name="email" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="forgot-cancel" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="forgot-step-2" style="display: none;">
+                <form id="reset-form">
+                    <div class="form-group">
+                        <label for="newPassword">Nueva Contraseña</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Contraseña</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="reset-cancel" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar Contraseña</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página del Dashboard -->
+    <div id="dashboard-page" class="page">
+        <div class="dashboard-container">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="logo-container clickable" id="logo-clickable">
+                        <img src="assets/pig-logo.jpg" alt="ACME Bank Logo" class="logo-image">
+                        <h1>ACME Bank</h1>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="user-profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name-header"></span>
+                    </div>
+                    <button id="logout-btn" class="btn btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </header>
+
+            <!-- Sidebar Overlay -->
+            <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+            <!-- Sidebar -->
+            <nav class="sidebar" id="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-section="transactions">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transacciones</span>
+                    </li>
+                    <li class="nav-item" data-section="deposit">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Depósitos</span>
+                    </li>
+                    <li class="nav-item" data-section="withdraw">
+                        <i class="fas fa-minus-circle"></i>
+                        <span>Retiros</span>
+                    </li>
+                    <li class="nav-item" data-section="payments">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Pagos</span>
+                    </li>
+                    <li class="nav-item" data-section="statements">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Extractos</span>
+                    </li>
+                    <li class="nav-item" data-section="certificate">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certificados</span>
+                    </li>
+                    <li class="nav-item" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Perfil</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Dashboard Section -->
+                <div id="dashboard-section" class="content-section active">
+                    <div class="section-header">
+                        <h2>Dashboard</h2>
+                        <p>Resumen de su cuenta</p>
+                    </div>
+                    
+                    <div class="account-summary">
+                        <div class="balance-card">
+                            <div class="card-header">
+                                <h3>Saldo Actual</h3>
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="balance-amount" id="balance-display">$0</div>
+                        </div>
+                        
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="label">Número de Cuenta:</span>
+                                <span class="value" id="account-number-display">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Titular:</span>
+                                <span class="value" id="account-holder-display">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Fecha de Apertura:</span>
+                                <span class="value" id="account-created-display">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-transactions">
+                        <div class="section-header">
+                            <h3>Transacciones Recientes</h3>
+                        </div>
+                        <div class="table-container">
+                            <table id="recent-transactions-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Referencia</th>
+                                        <th>Tipo</th>
+                                        <th>Descripción</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-transactions-tbody">
+                                    <tr>
+                                        <td colspan="5" class="no-data">No hay transacciones registradas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions Section -->
+                <div id="transactions-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Historial de Transacciones</h2>
+                        <button id="print-transactions" class="btn btn-secondary">
+                            <i class="fas fa-print"></i>
+                            Imprimir
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Referencia</th>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-tbody">
+                                <tr>
+                                    <td colspan="5" class="no-data">No hay transacciones registradas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Deposit Section -->
+                <div id="deposit-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Depósitos</h2>
+                        <p>Consignar dinero a su cuenta</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="label">Número de Cuenta:</span>
+                                <span class="value" id="deposit-account-number">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Titular:</span>
+                                <span class="value" id="deposit-account-holder">-</span>
+                            </div>
+                        </div>
+                        
+                        <form id="deposit-form" class="transaction-form">
+                            <div class="form-group">
+                                <label for="deposit-amount">Monto a Consignar</label>
+                                <input type="number" id="deposit-amount" name="amount" min="1" max="50000000" required>
+                                <small class="form-hint">Monto mínimo: $1 (COP) - Monto máximo: $50,000,000 (COP)</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus-circle"></i>
+                                Realizar Depósito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Withdraw Section -->
+                <div id="withdraw-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Retiros</h2>
+                        <p>Retirar dinero de su cuenta</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="label">Número de Cuenta:</span>
+                                <span class="value" id="withdraw-account-number">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Titular:</span>
+                                <span class="value" id="withdraw-account-holder">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Saldo Disponible:</span>
+                                <span class="value balance" id="withdraw-balance">$0</span>
+                            </div>
+                        </div>
+                        
+                        <form id="withdraw-form" class="transaction-form">
+                            <div class="form-group">
+                                <label for="withdraw-amount">Monto a Retirar</label>
+                                <input type="number" id="withdraw-amount" name="amount" min="1" max="2000000" required>
+                                <small class="form-hint">Monto mínimo: $1 - Monto máximo: $2,000,000</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-minus-circle"></i>
+                                Realizar Retiro
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Payments Section -->
+                <div id="payments-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Pagos de Servicios</h2>
+                        <p>Pagar sus servicios públicos</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="label">Número de Cuenta:</span>
+                                <span class="value" id="payments-account-number">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Titular:</span>
+                                <span class="value" id="payments-account-holder">-</span>
+                            </div>
+                        </div>
+                        
+                        <form id="payments-form" class="transaction-form">
+                            <div class="form-group">
+                                <label for="service-type">Tipo de Servicio</label>
+                                <select id="service-type" name="service" required>
+                                    <option value="">Seleccionar servicio</option>
+                                    <option value="energia">Recibo de la luz - CENS</option>
+                                    <option value="agua">Aguas Kpital Cúcuta</option>
+                                    <option value="gas">Gases del Oriente</option>
+                                    <option value="internet">Servicio de Internet - CLARO</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service-reference">Referencia del Servicio</label>
+                                <input type="text" id="service-reference" name="reference" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="payment-amount">Monto a Pagar</label>
+                                <input type="number" id="payment-amount" name="amount" min="1" max="5000000" required>
+                                <small class="form-hint">Monto mínimo: $1 - Monto máximo: $5,000,000</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-credit-card"></i>
+                                Realizar Pago
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Statements Section -->
+                <div id="statements-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Extractos Bancarios</h2>
+                        <p>Generar extractos de sus movimientos</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="label">Número de Cuenta:</span>
+                                <span class="value" id="statements-account-number">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Titular:</span>
+                                <span class="value" id="statements-account-holder">-</span>
+                            </div>
+                        </div>
+                        
+                        <form id="statements-form" class="transaction-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="statement-year">Año</label>
+                                    <select id="statement-year" name="year" required>
+                                        <option value="">Seleccionar año</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="statement-month">Mes</label>
+                                    <select id="statement-month" name="month" required>
+                                        <option value="">Seleccionar mes</option>
+                                        <option value="1">Enero</option>
+                                        <option value="2">Febrero</option>
+                                        <option value="3">Marzo</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Mayo</option>
+                                        <option value="6">Junio</option>
+                                        <option value="7">Julio</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-file-alt"></i>
+                                Generar Extracto
+                            </button>
+                        </form>
+                        
+                        <div id="statement-results" class="results-container" style="display: none;">
+                            <div class="section-header">
+                                <h3>Extracto de <span id="statement-period"></span></h3>
+                                <button id="print-statement" class="btn btn-secondary">
+                                    <i class="fas fa-print"></i>
+                                    Imprimir
+                                </button>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table id="statement-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Referencia</th>
+                                            <th>Tipo</th>
+                                            <th>Descripción</th>
+                                            <th>Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="statement-tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate Section -->
+                <div id="certificate-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Certificado de Cuenta</h2>
+                        <p>Generar certificado de existencia de cuenta</p>
+                    </div>
+                    
+                    <div class="certificate-container">
+                        <div id="certificate-document" class="certificate">
+                            <div class="certificate-header">
+                                <div class="logo-container">
+                                    <img src="assets/pig-logo.jpg" alt="ACME Bank Logo" class="logo-image">
+                                    <div class="cert-title">
+                                        <h1>ACME Bank</h1>
+                                        <p>Sistema Bancario Seguro</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="certificate-content">
+                                <h2>CERTIFICADO DE EXISTENCIA DE CUENTA</h2>
+                                
+                                <p class="cert-intro">
+                                    ACME Bank certifica que el titular identificado a continuación 
+                                    mantiene una cuenta de ahorros activa en nuestra institución:
+                                </p>
+                                
+                                <div class="cert-details">
+                                    <div class="detail-item">
+                                        <span class="label">Titular de la Cuenta:</span>
+                                        <span class="value" id="cert-holder-name">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Número de Identificación:</span>
+                                        <span class="value" id="cert-holder-id">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Número de Cuenta:</span>
+                                        <span class="value" id="cert-account-number">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Fecha de Apertura:</span>
+                                        <span class="value" id="cert-account-date">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Fecha de Expedición:</span>
+                                        <span class="value" id="cert-issue-date">-</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="cert-footer">
+                                    Este certificado es válido por 30 días a partir de la fecha de expedición.
+                                </p>
+                                
+                                <div class="signature-section">
+                                    <div class="signature-space"></div>
+                                    <p class="signature-text">Representante Legal<br>ACME Bank</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-actions">
+                            <button id="print-certificate" class="btn btn-primary">
+                                <i class="fas fa-print"></i>
+                                Imprimir Certificado
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div id="profile-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Mi Perfil</h2>
+                        <p>Información de su cuenta</p>
+                    </div>
+                    
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3 id="profile-name">-</h3>
+                                <p id="profile-email">-</p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-details">
+                            <div class="detail-section">
+                                <h4>Información Personal</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <span class="label">Tipo de Documento:</span>
+                                        <span class="value" id="profile-id-type">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Número de Documento:</span>
+                                        <span class="value" id="profile-id-number">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Teléfono:</span>
+                                        <span class="value" id="profile-phone">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Género:</span>
+                                        <span class="value" id="profile-gender">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Ciudad:</span>
+                                        <span class="value" id="profile-city">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Dirección:</span>
+                                        <span class="value" id="profile-address">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-section">
+                                <h4>Información de Cuenta</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <span class="label">Número de Cuenta:</span>
+                                        <span class="value" id="profile-account-number">-</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Saldo Actual:</span>
+                                        <span class="value balance" id="profile-balance">$0</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Fecha de Apertura:</span>
+                                        <span class="value" id="profile-created-date">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./JavaScript/utils.js"></script>
+    <script src="./JavaScript/auth.js"></script>
+    <script src="./JavaScript/dashboard.js"></script>
+    <script src="./JavaScript/transactions.js"></script>
+    <script src="./JavaScript/reports.js"></script>
+    <script src="./JavaScript/script.js"></script>
+</body>
+</html>
